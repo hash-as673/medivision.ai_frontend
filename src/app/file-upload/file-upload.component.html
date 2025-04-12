@@ -1,0 +1,21 @@
+<div class="main-container">
+  <div class="card">
+    <h2 class="title">medivision.ai</h2>
+    <p class="subtitle">Upload an X-ray image to check for TB detection</p>
+    <form (submit)="uploadFile($event)">
+      <div class="form-group">
+        <label for="file" class="form-label">Select an X-ray Image</label>
+        <input type="file" (change)="onFileSelected($event)" class="form-control" id="file" />
+      </div>
+      <button type="submit" class="btn-submit" [disabled]="!selectedFile">Analyze</button>
+    </form>
+
+    <div *ngIf="prediction" class="result">
+      <h3 class="result-title">Result: {{ prediction }}</h3>
+    </div>
+
+    <div *ngIf="error" class="error-message">
+      <h4>Error: {{ error }}</h4>
+    </div>
+  </div>
+</div>
